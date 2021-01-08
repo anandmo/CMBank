@@ -48,5 +48,17 @@ public class AppController {
 
 		return "users";
 	}
+	
+	@GetMapping("/userportal")
+	public String userPortal(Model model) {
+
+		return "userportal";
+	}
+	
+	@GetMapping("/error")
+	public String userPortal() {
+
+		return "error";
+	}
 
 }
