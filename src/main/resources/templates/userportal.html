@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="utf-8">
 <title>CMBank User Portal</title>
 <link rel="stylesheet" type="text/css"
 	href="/webjars/bootstrap/css/bootstrap.min.css" />
@@ -15,8 +15,27 @@
 		<div>
 			<form th:action="@{/logout}" method="post">
 				<p>
-					Welcome <b>[[${#request.userPrincipal.principal.fullName}]]</b>
+					Welcome to CMBank <b>[[${#request.userPrincipal.principal.fullName}]]</b>
 				</p>
+
+				<h3>
+					<a th:href="@{/newaccount}">Open new bank account</a>
+				</h3>
+				        
+				<h3>
+					<a th:href="@{/addmoney}">Add money to you bank account</a>
+				</h3>
+				        
+				<h3>
+					<a th:href="@{/transfermoney}">Transfer money to different
+						account</a>
+				</h3>
+
+				<h3>
+					<a th:href="@{/viewaccount}">View your Bank account details</a>
+				</h3>
+
+
 				<input type="submit" value="Sign Out" />
 			</form>
 		</div>
