@@ -28,7 +28,7 @@ public class BankAccount {
 	private long currentbalance;
 
 	@Column(name = "uuid", nullable = true, length = 20)
-	private String uuid;
+	private long uuid;
 
 	@Column(name = "pannumber", nullable = false, length = 100)
 	private String pannumber;
@@ -78,11 +78,11 @@ public class BankAccount {
 		this.currentbalance = currentbalance;
 	}
 
-	public String getUuid() {
+	public long getUuid() {
 		return uuid;
 	}
 
-	public void setUuid(String uuid) {
+	public void setUuid(long uuid) {
 		this.uuid = uuid;
 	}
 

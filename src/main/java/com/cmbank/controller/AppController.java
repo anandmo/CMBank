@@ -48,6 +48,8 @@ public class AppController {
 
 	@PostMapping("/process_openaccount")
 	public String processOpenAccount(BankAccount bankaccount) {
+		User user = userRepo.findByEmail(bankaccount.getEmail());
+		bankaccount.setUuid(user.getId());
 		accountRepo.save(bankaccount);
 		return "account_success";
 	}
