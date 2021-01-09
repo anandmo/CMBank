@@ -9,7 +9,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.cmbank.model.BankAccount;
 import com.cmbank.model.User;
+import com.cmbank.repository.BankAccountRepository;
 import com.cmbank.repository.UserRepository;
 
 @Controller
@@ -17,6 +19,9 @@ public class AppController {
 
 	@Autowired
 	private UserRepository userRepo;
+
+	@Autowired
+	private BankAccountRepository accountRepo;
 
 	@GetMapping("")
 	public String viewHomePage() {
@@ -41,6 +46,12 @@ public class AppController {
 		return "register_success";
 	}
 
+	@PostMapping("/process_openaccount")
+	public String processOpenAccount(BankAccount bankaccount) {
+		accountRepo.save(bankaccount);
+		return "account_success";
+	}
+
 	@GetMapping("/users")
 	public String listUsers(Model model) {
 		List<User> listUsers = userRepo.findAll();
@@ -48,17 +59,23 @@ public class AppController {
 
 		return "users";
 	}
-	
+
 	@GetMapping("/userportal")
 	public String userPortal(Model model) {
 
 		return "userportal";
 	}
-	
-	@GetMapping("/error")
+
+	/*@GetMapping("/error")
 	public String userPortal() {
 
 		return "error";
+	}*/
+
+	@GetMapping("/newaccount")
+	public String openAccount(Model model) {
+		model.addAttribute("bankaccount", new BankAccount());
+		return "newaccount";
 	}
 
 }
